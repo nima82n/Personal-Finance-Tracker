@@ -1,0 +1,308 @@
+form {
+    margin: 1%;
+}
+
+
+#currency-amount, #disabledInput {
+    display: inline;
+    width: 40%;
+    margin: 1%;
+}
+
+
+#first-currency, #second-currency {
+    display: inline;
+    margin: 1%;
+    width: 43%;
+}
+
+
+.currency-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+
+#transactionChart-div {
+    width: 75%;
+    float: right;
+}
+
+
+#chart-filters {
+    margin: 1%;
+    margin-top: 2%;
+}
+
+
+.btn-group {
+    margin: 1%;
+}
+
+
+#transaction {
+    margin: 1%;
+}
+
+
+#category, #transaction-type, #transaction-amount, #transaction-title {
+    margin-top: 1%;
+}
+
+
+#category {
+    width: 97%;
+    display: inline;
+    transition: width 0.5s ease;
+}
+
+
+#add-button {
+    width: 4.5%;
+    margin-left: 5px;
+    margin-top: 9px;
+}
+
+
+.card {
+    margin: 1%;
+}
+
+
+.pagination {
+    margin: 1%;
+}
+
+
+#animate-button, #b-container {
+    display: block;
+    margin: 0 auto;
+    width: 97%;
+    text-align: center;
+}
+
+
+#transaction-button {
+    margin: 0.5%;
+    width: 99%;
+}
+
+
+#balance {
+    font-weight: bold;
+}
+
+
+#error {
+    margin: 1%;
+}
+
+
+#category-div {
+    display: flex;
+    align-items: center;
+    height: 5vh;
+}
+
+
+
+#add-category {
+    width: 0;
+    transition: width 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    margin-top: 4.5vh;
+    margin-left: 5px;
+}
+
+
+#add-category.show {
+    width: 45%;
+    opacity: 1;
+}
+
+
+.apear-animation {
+    display: block;
+    animation-name: apear;
+    animation-duration: 0.7s;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+
+#transaction {
+    display: none;
+    opacity: 0;
+    transform: scale(0.8, 0.8);
+    filter: brightness(3) saturate(3);
+}
+
+
+@keyframes apear {
+    0% {
+        opacity: 0;
+        filter: brightness(3) saturate(3);
+        transform: scale(0.8, 0.8);
+    }
+    100% {
+        opacity: 1;
+        filter: brightness(1);
+        transform: scale(1, 1);
+    }
+}
+
+
+#category-select, #type-select, #month-select {
+    display: inline;
+    width: 10%;
+    margin: 1%;
+}
+
+
+#filters {
+    margin: 1%;
+}
+
+
+#chart-category, #chart-month {
+    float: right;
+}
+
+
+#type-button {
+    float: right;
+}
+
+
+#balance {
+    display: inline;
+}
+
+
+#conversion-container {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+
+#answer-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 7vh;
+    height: 50vh;
+}
+
+
+.form-control {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease;
+    flex: 1;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+
+#disabledInput {
+    background-color: #e9ecef;
+    color: #495057;
+    font-weight: 500;
+    width: 100%;
+}
+
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+#filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+  
+#filters label {
+    margin-right: 0.5rem;
+    white-space: nowrap;
+}
+  
+#filters > div {
+    display: flex;
+    align-items: center;
+}
+  
+#filters select {
+    width: auto;
+}
+
+
+#container {
+    display: flex;
+    gap: 20px;
+  }
+  
+#boxes {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @media (max-width: 768px) {
+    #container {
+      flex-direction: column;
+    }
+  
+    #transactionChart-div {
+      width: 100%;
+      height: 200px;
+    }
+  
+    #boxes {
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+
+#currency-amount {
+    order: 0;
+}
+#convert-balance, #done {
+    order: 1;
+}
+
+
+@media (max-width: 600px) {
+    #button-container {
+        flex-direction: column;
+    }
+
+    #currency-amount {
+        order: 2;
+        width: 100%;
+    }
+
+    #convert-balance, #done {
+        order: 1;
+    }
+}

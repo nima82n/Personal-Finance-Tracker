@@ -1,0 +1,96 @@
+{% extends "finance/layout.html" %}
+{% load static %}
+{% block title %}
+Home
+{% endblock title %}
+
+{% block script %}
+<script src='{% static "finance/index.js" %}' ></script>
+{% endblock  %}
+
+{% block csrf %}
+<meta name="csrf-token" content="{{ csrf_token }}">
+{% endblock  %}
+
+
+{% block body %}
+<br>
+<button class="btn btn-success" onclick="showTransaction()" id='animate-button'>Transaction <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5z"/>
+  </svg>
+</button>
+
+<div id='transaction' >
+    <label><h4>Transaction:</h4></label>
+    <input type="text" id='transaction-title' placeholder='Title' class="form-control" >
+    <input type="number" id="transaction-amount" placeholder='Amount' class="form-control" step='0.01' min=0 >
+    <div id='category-div' >
+        <select id="category" class="form-select" >
+            <option >Choose category</option>
+            {% for category in categories %}
+                <option value="{{category.name}}"> {{category.name}} </option>
+            {% endfor %}
+        </select>
+        <button type="button" class="btn btn-success" id='add-button'>        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0"/>
+          </svg></button>
+        <div class="input-group mb-3" id="add-category" >
+            <input type="text" class="form-control" aria-describedby="button-addon2" id='add-input'>
+            <button class="btn btn-primary" type="button" id="button-addon2">Add</button>
+        </div>
+    </div>
+    <select id="transaction-type" class="form-select" >
+        <option value="withdraw">withdraw</option>
+        <option value="deposit">deposit</option>
+    </select>
+    <button id='transaction-button' class="btn btn-success" >Save 
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5m8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+          </svg>
+    </button>
+    </div>
+
+    <div id="filters">
+        <div class="filter-item">
+            <label for="category-select"><strong>Category:</strong></label>
+            <select id="category-select" class="form-select" aria-label="Default select example">
+                <option value="All">All</option>
+                {% for category in categories %}
+                    <option value="{{category.id}}">{{category.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="filter-item">
+            <label for="type-select"><strong>Type:</strong></label>
+            <select id="type-select" class="form-select" aria-label="Default select example">
+                <option value="All">All</option>
+                <option value="Deposit">Deposit</option>
+                <option value="Withdraw">Withdraw</option>
+            </select>
+        </div>
+        
+        <div class="filter-item">
+            <label for="month-select"><strong>Month:</strong></label>
+            <select id="month-select" class="form-select">
+                <option value="All">All</option>
+                <option value="Jan">January</option>
+                <option value="Feb">February</option>
+                <option value="Mar">March</option>
+                <option value="Apr">April</option>
+                <option value="May">May</option>
+                <option value="Jun">June</option>
+                <option value="Jul">July</option>
+                <option value="Aug">August</option>
+                <option value="Sep">September</option>
+                <option value="Oct">October</option>
+                <option value="Nov">November</option>
+                <option value="Dec">December</option>
+            </select>
+        </div>
+    </div>
+    
+
+    <div id='reports-container'>
+    </div>
+{% endblock body %}

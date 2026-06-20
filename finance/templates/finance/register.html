@@ -1,0 +1,13 @@
+{% extends "finance/layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Register{% endblock title %}
+
+{% block body %}
+<form method='post' action='' class='form-control'>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-secondary">Register</button>
+</form >
+<p>Already have an account? <a href="{% url "login" %}">Login.</a></p>
+{% endblock body %}
